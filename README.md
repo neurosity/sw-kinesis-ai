@@ -28,3 +28,11 @@ NEUROSITY_DEVICE_ID="ID"
 RUNPOD_API_KEY="KEY"
 
 Run with `python main.py`
+
+## Docker image
+
+Find the docker image at https://hub.docker.com/repository/docker/1shotfinish/runpod_hack/
+In this image, you'll find the model joblib file and standard scaler pickle file
+
+* model - random_forest_model2.joblib
+* standard scaler - standard_scaler.pkl
