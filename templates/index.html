@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neurosity Data</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      color: #3b82f6;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #output {
+      white-space: pre-wrap;
+      text-align: center;
+      background-color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      color: #111827;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      width: 80%;
+      max-width: 600px;
+      transition: all 0.3s ease;
+    }
+
+    #details {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #6b7280;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+
+    .detail-item {
+      margin: 0 10px;
+      padding: 5px 10px;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #3b82f6;
+    }
+
+    #predictions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      color: #111827;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 1em;
+      margin-top: 20px;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    #predictions h2 {
+      width: 100%;
+      margin-top: 0;
+      font-size: 1.2em;
+      color: #3b82f6;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .prediction-label {
+      margin: 5px;
+      padding: 5px 10px;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <script>
+    async function fetchLatestResponse() {
+      const response = await fetch('/latest_response');
+      const data = await response.json();
+      const capitalizedOutput = data.output.charAt(0).toUpperCase() + data.output.slice(1);
+      const formattedOutput = `${capitalizedOutput}`;
+      const formattedDetails = `
+        <div class="detail-item">Request Delay Time: ${data.delayTime} ms</div>
+        <div class="detail-item">GPU Execution Time: ${data.executionTime} ms</div>
+      `;
+
+      const outputElement = document.getElementById('output');
+      const detailsElement = document.getElementById('details');
+
+      outputElement.classList.remove('fade-in');
+      detailsElement.classList.remove('fade-in');
+
+      void outputElement.offsetWidth;
+      void detailsElement.offsetWidth;
+
+      outputElement.classList.add('fade-in');
+      detailsElement.classList.add('fade-in');
+
+      outputElement.innerText = formattedOutput;
+      detailsElement.innerHTML = formattedDetails;
+    }
+
+    setInterval(fetchLatestResponse, 1000);
+  </script>
+</head>
+
+<body>
+  <h1>Neurosity Real-time Motor Imagery Prediction</h1>
+  <pre id="output" class="fade-in">Loading...</pre>
+  <div id="details" class="fade-in"></div>
+  <div id="predictions">
+    <h2>Potential Predictions:</h2>
+    <div class="prediction-label">Rest</div>
+    <div class="prediction-label">Left Arm</div>
+    <div class="prediction-label">Tongue</div>
+    <div class="prediction-label">Jumping Jacks</div>
+    <div class="prediction-label">Left Foot</div>
+    <div class="prediction-label">Push</div>
+    <div class="prediction-label">Disappear</div>
+  </div>
+</body>
+
+</html>
