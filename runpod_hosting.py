@@ -1,12 +1,13 @@
 # whatever.py
 
 import runpod
-import joblib
+import joblib, pickle
 import ast
 import numpy as np
+import cupy as cp
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
-best_rf_model = joblib.load('random_forest_model.joblib')
+best_rf_model = joblib.load('random_forest_model2.joblib')
 
 dictionary = {
   "rest": 0,
@@ -47,6 +48,15 @@ dictionary = {
 }
 reversed_dict = {v: k for k, v in dictionary.items()}
 
+dictionary_encoded = {
+  34: 0, 7: 1, 2: 2, 8: 3,
+        4: 4, 22: 5, 0: 6, 6: 7
+}
+reversed_dictionary_encoded = {v: k for k, v in dictionary_encoded.items()}
+
+with open('standard_scaler.pkl', 'rb') as file:
+    scaler = pickle.load(file)
+
 def find_action(job):   
 
     job_input = job["input"]
@@ -59,11 +69,12 @@ def find_action(job):
     
     matrix_flat = matrix_np.reshape(1, -1)
     
-    predicted_class = best_rf_model.predict(matrix_flat)[0]
-    print(predicted_class)
-    if predicted_class not in reversed_dict:
-        return "Unknown"
-    return reversed_dict[predicted_class]
+    matrix_flat_normalized = scaler.transform(matrix_flat)
+    matrix_flat_gpu = cp.array(matrix_flat_normalized)
+    
+    predicted_class = best_rf_model.predict(matrix_flat_gpu).item()
+    predicted_label = reversed_dict[reversed_dictionary_encoded[int(predicted_class)]]
+    return predicted_label
 
 
 runpod.serverless.start({"handler": find_action})
