@@ -2,6 +2,10 @@
 
 Runpod hackathon - Neurosity classifier
 
+## Demo
+
+[![Demo Video](https://img.youtube.com/vi/1_1rjStQWXQ/0.jpg)](https://youtube.com/shorts/1_1rjStQWXQ?feature=share)
+
 ## Dataset
 
 The dataset contains 8 classes:
