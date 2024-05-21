@@ -3,7 +3,7 @@ import time
 import os
 from neurosity import NeurositySDK
 from dotenv import load_dotenv
-from filterer import Filterer, RingBufferSignal
+from src.filterer import Filterer, RingBufferSignal
 import numpy as np
 import requests
 import json

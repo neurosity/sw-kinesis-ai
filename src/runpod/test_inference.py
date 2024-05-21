@@ -1,12 +1,14 @@
 import requests
 import json
 import numpy as np
+import os
+
 
 url = "https://api.runpod.ai/v2/8uqz9rklt6dkt6/runsync"
 url = "https://api.runpod.ai/v2/rifqrrc90o57rk/runsync"
 headers = {
     "accept": "application/json",
-    "authorization": "ZM4EYQQ5U94CH3SAELWMENRUNRNPEXUU4SN6FMPC",
+    "authorization": os.getenv("RUNPOD_API_KEY"),
     "content-type": "application/json"
 }
 

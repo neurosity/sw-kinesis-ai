@@ -1,0 +1,6 @@
+requests
+scikit-learn
+scipy
+flask
+neurosity
+numpy
