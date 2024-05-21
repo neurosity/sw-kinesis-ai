@@ -27,9 +27,11 @@ NEUROSITY_PASSWORD="password"
 NEUROSITY_DEVICE_ID="ID"
 RUNPOD_API_KEY="KEY"
 
-Run with `python main.py`
+Run Crown processing code with with `python main.py`
 
 ## Docker image
+
+You'll need to deploy the model on runpod. Here's a [guide](https://github.com/EveripediaNetwork/runpod-worker-vllm) on how to get started with runpod.
 
 Find the docker image at https://hub.docker.com/repository/docker/1shotfinish/runpod_hack/
 In this image, you'll find the model joblib file and standard scaler pickle file
