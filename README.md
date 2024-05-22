@@ -1,6 +1,10 @@
-# Runpod Hackathon
+# Neurosity Kinesis Classifier
 
-Runpod hackathon - Neurosity classifier
+Use this 81.2% accuracy model to classify Neurosity Kinesis data across 8 classes.
+
+The dataset it build on over 100,000 Kinesis trials. These are covaraince matricies, so 8x8 arrays.
+
+**Yes** the data is 100% available to you [here](https://drive.google.com/file/d/1mdRl99CRX-zJ_t3-rDLQ6CzIUezXaGsc/view?usp=sharing).
 
 ## Demo
 
@@ -36,5 +40,5 @@ You'll need to deploy the model on runpod. Here's a [guide](https://github.com/E
 Find the docker image at https://hub.docker.com/repository/docker/1shotfinish/runpod_hack/
 In this image, you'll find the model joblib file and standard scaler pickle file
 
-* model - random_forest_model2.joblib
-* standard scaler - standard_scaler.pkl
+- model - random_forest_model2.joblib
+- standard scaler - standard_scaler.pkl
