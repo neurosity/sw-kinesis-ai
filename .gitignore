@@ -1,3 +1,5 @@
 *.joblib
 *.pkl
 .DS_Store
+data/
+.ipynb_checkpoints/

@@ -54,8 +54,8 @@ dictionary_encoded = {
 }
 reversed_dictionary_encoded = {v: k for k, v in dictionary_encoded.items()}
 
-with open('standard_scaler.pkl', 'rb') as file:
-    scaler = pickle.load(file)
+# with open('standard_scaler.pkl', 'rb') as file:
+#     scaler = pickle.load(file)
 
 def find_action(job):   
 
@@ -69,8 +69,10 @@ def find_action(job):
     
     matrix_flat = matrix_np.reshape(1, -1)
     
-    matrix_flat_normalized = scaler.transform(matrix_flat)
-    matrix_flat_gpu = cp.array(matrix_flat_normalized)
+    matrix_flat_gpu = cp.array(matrix_flat)
+
+    # matrix_flat_normalized = scaler.transform(matrix_flat)
+    # matrix_flat_gpu = cp.array(matrix_flat_normalized)
     
     predicted_class = best_rf_model.predict(matrix_flat_gpu).item()
     predicted_label = reversed_dict[reversed_dictionary_encoded[int(predicted_class)]]
