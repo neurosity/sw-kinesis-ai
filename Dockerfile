@@ -14,8 +14,7 @@ RUN pip install cuml-cu11 --extra-index-url=https://pypi.nvidia.com
 
 # Add your file
 ADD src/runpod/runpod_hosting.py .
-ADD random_forest_model2.joblib .
-ADD standard_scaler.pkl .
+ADD data/random_forest_model.joblib .
 
 # Call your file when your container starts
 CMD [ "python", "-u", "/runpod_hosting.py" ]

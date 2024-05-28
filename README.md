@@ -39,7 +39,7 @@ Run Crown processing code with with `python main.py`
 
 You'll need to deploy the model on runpod. Here's a [guide](https://github.com/EveripediaNetwork/runpod-worker-vllm) on how to get started with runpod.
 
-Find the docker image at https://hub.docker.com/repository/docker/1shotfinish/runpod_hack/
+Find the docker image at https://hub.docker.com/repository/docker/andrewjaykeller/sw-kinesis-ai/
 In this image, you'll find the model joblib file
 
 You may get the latest model from [my google drive](https://drive.google.com/file/d/1rpGhH2pjyK787c8YEWKbUA78nuYdW_Jh/view?usp=sharing) until we figure out a more efficent way.
