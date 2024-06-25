@@ -28,10 +28,12 @@ We had to remove many rest trials because half of the 455,100 trials were rest t
 
 You'll need to create a .env file to store four environment variables:
 
+```
 NEUROSITY_EMAIL="email"
 NEUROSITY_PASSWORD="password"
 NEUROSITY_DEVICE_ID="ID"
 RUNPOD_API_KEY="KEY"
+```
 
 Run Crown processing code with with `python main.py`
 
